@@ -20,7 +20,7 @@ export const Global = createGlobalStyle`
 }
 
 * {
-    margin: 100px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: none;
