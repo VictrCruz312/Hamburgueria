@@ -8,7 +8,7 @@ import { Global } from "./styles/Global";
 function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
-  // const [cartTotal, setCartTotal] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -34,16 +34,26 @@ function App() {
   const removeCart = (id) =>
     setCurrentSale(currentSale.filter((sale) => sale.id !== parseInt(id)));
 
+  useEffect(() => {
+    setCartTotal(currentSale.reduce((a, b) => a + b.price, 0).toFixed(2));
+  }, [currentSale]);
+
   return (
-    <div className="App">
+    <>
       <Global />
       <Header showProducts={showProducts} />
-      <ProductList
-        filteredProducts={filteredProducts}
-        handleClick={handleClick}
-      />
-      <Cart currentSale={currentSale} removeCart={removeCart} />
-    </div>
+      <div className="App">
+        <ProductList
+          filteredProducts={filteredProducts}
+          handleClick={handleClick}
+        />
+        <Cart
+          currentSale={currentSale}
+          cartTotal={cartTotal}
+          removeCart={removeCart}
+        />
+      </div>
+    </>
   );
 }
 

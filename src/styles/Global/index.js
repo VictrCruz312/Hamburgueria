@@ -4,6 +4,8 @@ export const Global = createGlobalStyle`
 :root {
  --font-inter: 'Inter', sans-serif;
 
+ --color-white: 255, 255, 255;
+
  --color-primary: 39, 174, 96;
  --color-primary-50: 147, 215, 175;
  --color-secondary: 235, 87, 87;
@@ -20,6 +22,7 @@ export const Global = createGlobalStyle`
 }
 
 * {
+    font-family: var(--font-inter);
     margin: 0;
     padding: 0;
     box-sizing: border-box;

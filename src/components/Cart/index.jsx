@@ -1,26 +1,35 @@
-const Cart = ({ currentSale, removeCart }) => {
+import { StyleCart } from "./style";
+
+const Cart = ({ currentSale, cartTotal, removeCart }) => {
   return (
-    <div>
+    <StyleCart>
       <h2>Carrinho de compras</h2>
-      <ul>
-        {currentSale.map((sale) => (
-          <li key={sale.id}>
-            <img src={sale.img} alt="" />
-            <div>
-              <div>
-                <h3>{sale.name}</h3>
-                <span>{sale.category}</span>
+      <div className="containerCartProducts">
+        <ul>
+          {currentSale.map((sale) => (
+            <li key={sale.id}>
+              <figure>
+                <img src={sale.img} alt="" />
+              </figure>
+              <div className="containerListCart">
+                <div>
+                  <h3>{sale.name}</h3>
+                  <span>{sale.category}</span>
+                </div>
+                <button onClick={() => removeCart(sale.id)}>Remover</button>
               </div>
-              <button onClick={() => removeCart(sale.id)}>Remover</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div>
-        <p>Valor</p>
-        <p>R$ {currentSale.reduce((a, b) => a + b.price, 0).toFixed(2)}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="containerTotal">
+          <div>
+            <p className="textValue">Valor</p>
+            <p className="value">R$ {cartTotal}</p>
+          </div>
+          <button>Remover todos</button>
+        </div>
       </div>
-    </div>
+    </StyleCart>
   );
 };
 
