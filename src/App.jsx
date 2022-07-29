@@ -21,13 +21,19 @@ function App() {
   }, []);
 
   const handleClick = (product) => {
-    setCurrentSale([...currentSale, product]);
+    !currentSale.find((elem) => elem.id === product.id) &&
+      setCurrentSale([...currentSale, product]);
   };
 
   const showProducts = (filter) =>
     filter
       ? setFilteredProducts(
-          products.filter((product) => product.name.indexOf(filter) !== -1)
+          products.filter((product) => {
+            return product.name.toLowerCase().includes(filter.toLowerCase()) ||
+              product.category.toLowerCase().includes(filter.toLowerCase())
+              ? true
+              : false;
+          })
         )
       : setFilteredProducts(products);
 
