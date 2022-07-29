@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const StyleCart = styled.div`
   width: 355px;
   max-width: 365px;
+  min-width: 300px;
   border-radius: 5px;
+  margin: 0 auto;
 
   h2 {
     height: 65px;
@@ -27,6 +29,22 @@ export const StyleCart = styled.div`
       gap: 21px;
       overflow-y: scroll;
       border-bottom: 2px solid rgb(var(--grey-20));
+
+      & > .cartVazio h3 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        color: rgb(var(--grey-100));
+      }
+
+      & > .cartVazio p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        color: rgb(var(--grey-50));
+      }
 
       li {
         display: flex;
@@ -111,6 +129,11 @@ export const StyleCart = styled.div`
       background: rgb(var(--grey-20));
       border: 2px solid rgb(var(--grey-20));
       border-radius: 8px;
+    }
+  }
+
+  @media screen and (min-width: 1152px) {
+    & {
     }
   }
 `;

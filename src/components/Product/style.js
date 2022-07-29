@@ -4,6 +4,7 @@ export const LiProduct = styled.li`
   border: 2px solid rgb(var(--grey-20));
   border-radius: 5px;
   width: 300px;
+  min-width: 300px;
   height: 346px;
 
   figure {

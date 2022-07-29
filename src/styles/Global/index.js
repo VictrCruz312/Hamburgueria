@@ -32,4 +32,8 @@ export const Global = createGlobalStyle`
 ul, li {
     list-style: none;
 }
+
+button {
+    cursor: pointer;
+}
 `;

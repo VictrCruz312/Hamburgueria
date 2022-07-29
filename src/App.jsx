@@ -31,8 +31,15 @@ function App() {
         )
       : setFilteredProducts(products);
 
-  const removeCart = (id) =>
-    setCurrentSale(currentSale.filter((sale) => sale.id !== parseInt(id)));
+  const removeCart = (id) => {
+    id === "tudo"
+      ? setCurrentSale([])
+      : currentSale.forEach((sale, index) => {
+          if (sale.id === parseInt(id)) {
+            setCurrentSale(currentSale.filter((sale, i) => i !== index));
+          }
+        });
+  };
 
   useEffect(() => {
     setCartTotal(currentSale.reduce((a, b) => a + b.price, 0).toFixed(2));
